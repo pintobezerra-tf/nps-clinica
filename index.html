@@ -6,6 +6,159 @@
   <title>NPS Clínica</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
+      background: #eef1f4;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1 {
+      font-size: 30px;
+      line-height: 1.35;
+      margin-bottom: 28px;
+    }
+    .escala {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+    .escala label {
+      display: inline-block;
+    }
+    .escala input[type="radio"] {
+      display: none;
+    }
+    .nota {
+      display: inline-block;
+      width: 52px;
+      height: 52px;
+      line-height: 52px;
+      text-align: center;
+      border: 2px solid #777;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      user-select: none;
+      background: #fff;
+    }
+    .escala input[type="radio"]:checked + .nota {
+      background: #123e56;
+      color: #fff;
+      border-color: #123e56;
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      font-size: 20px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #bbb;
+      box-sizing: border-box;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-family: Arial, sans-serif;
+    }
+    button {
+      background: #123e56;
+      color: white;
+      font-size: 22px;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 28px;
+      cursor: pointer;
+    }
+    #msg {
+      margin-top: 18px;
+      font-size: 20px;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Olá, tudo bem?
+        Sua opinião é muito importante para melhorarmos nosso atendimento. 
+        A Dra. Lílian Guerra faz questão da sua opinião.</h1>
+      <h2> Em uma escala de 0 a 10, o quanto você recomendaria a clínica para um amigo ou familiar?</h2>
+
+    <div class="escala" id="escala"></div>
+
+    <label for="justificativa" style="font-size:24px;">
+      Se desejar, conte em poucas palavras o motivo da sua nota:
+    </label>
+    <textarea id="justificativa" placeholder="Digite aqui"></textarea>
+
+    <button onclick="enviar()">Enviar</button>
+
+    <div id="msg"></div>
+  </div>
+
+  <script>
+    var scriptURL = "https://script.google.com/macros/s/AKfycbzNoDXGqOdFPKLrkKAzHJvxLGhIRXa0e5ihsBdC-UqKm8oBu7DDteuD7YCOupg6Ba4BIQ/exec";
+
+    var escala = document.getElementById("escala");
+    for (var i = 0; i <= 10; i++) {
+      var label = document.createElement("label");
+      label.innerHTML =
+        '<input type="radio" name="nota" value="' + i + '">' +
+        '<span class="nota">' + i + '</span>';
+      escala.appendChild(label);
+    }
+
+    function enviar() {
+      var notaSelecionada = document.querySelector('input[name="nota"]:checked');
+      var justificativa = document.getElementById("justificativa").value;
+      var msg = document.getElementById("msg");
+
+      if (!notaSelecionada) {
+        msg.innerHTML = "Selecione uma nota antes de enviar.";
+        return;
+      }
+
+      msg.innerHTML = "Enviando...";
+
+      var url = scriptURL +
+        "?nota=" + encodeURIComponent(notaSelecionada.value) +
+        "&justificativa=" + encodeURIComponent(justificativa) +
+        "&origem=" + encodeURIComponent("iPad recepcao") +
+        "&t=" + new Date().getTime();
+
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = url;
+      document.body.appendChild(iframe);
+
+      setTimeout(function() {
+        msg.innerHTML = "Obrigado pela sua resposta.";
+        document.getElementById("justificativa").value = "";
+        notaSelecionada.checked = false;
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
+
+Que estava funcionando normal e voce me enviou uma versao aprimorada abaixo:
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NPS Clínica</title>
+  <style>
+    body {
       margin: 0;
       padding: 0;
       background: #f4f2ef;
@@ -35,6 +188,315 @@
       padding-bottom: 18px;
       border-bottom: 1px solid #e7e1db;
     }
+
+    .logo {
+      width: 90px;
+      height: auto;
+      margin-bottom: 14px;
+    }
+
+    .titulo-boasvindas {
+      font-size: 30px;
+      line-height: 1.3;
+      margin: 0 0 10px 0;
+      color: #7f7368;
+      font-weight: bold;
+    }
+
+    .texto-topo {
+      font-size: 21px;
+      line-height: 1.5;
+      margin: 0;
+      color: #5a4f48;
+    }
+
+    .box-pergunta {
+      background: #fbfaf8;
+      border: 1px solid #e7e1db;
+      border-radius: 14px;
+      padding: 18px 16px;
+      margin-bottom: 24px;
+    }
+
+    .pergunta {
+      font-size: 28px;
+      line-height: 1.4;
+      margin: 0;
+      font-weight: bold;
+      color: #3d342e;
+      text-align: center;
+    }
+
+    .legenda-escala {
+      width: 100%;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      border-collapse: collapse;
+    }
+
+    .legenda-escala td {
+      font-size: 18px;
+      color: #7f7368;
+      padding: 4px 0;
+    }
+
+    .legenda-esquerda {
+      text-align: left;
+    }
+
+    .legenda-direita {
+      text-align: right;
+    }
+
+    .escala {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .opcao-nota {
+      display: inline-block;
+      margin: 6px 4px;
+      text-align: center;
+      vertical-align: top;
+    }
+
+    .opcao-nota input {
+      display: none;
+    }
+
+    .numero-topo {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #5a4f48;
+      font-weight: bold;
+    }
+
+    .bola {
+      display: inline-block;
+      width: 52px;
+      height: 52px;
+      line-height: 52px;
+      text-align: center;
+      border: 2px solid #a79a8d;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #7f7368;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .opcao-nota input:checked + .bola {
+      background: #a79a8d;
+      border-color: #7f7368;
+      color: #ffffff;
+    }
+
+    .campo-label {
+      display: block;
+      font-size: 25px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      font-weight: bold;
+      color: #3d342e;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      box-sizing: border-box;
+      padding: 16px;
+      font-size: 21px;
+      font-family: Arial, sans-serif;
+      color: #3d342e;
+      border: 1px solid #cfc5bc;
+      border-radius: 12px;
+      background: #fcfbf9;
+      margin-bottom: 22px;
+      resize: none;
+    }
+
+    .area-botao {
+      text-align: center;
+    }
+
+    button {
+      background: #7f7368;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 18px 34px;
+      font-size: 26px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #msg {
+      margin-top: 18px;
+      font-size: 21px;
+      line-height: 1.4;
+      text-align: center;
+      color: #7f7368;
+      min-height: 28px;
+    }
+
+    .rodape {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 17px;
+      color: #8e8175;
+      line-height: 1.4;
+    }
+
+    @media screen and (max-width: 700px) {
+      .container {
+        width: 94%;
+        padding: 20px 16px 24px 16px;
+      }
+
+      .titulo-boasvindas {
+        font-size: 25px;
+      }
+
+      .texto-topo {
+        font-size: 19px;
+      }
+
+      .pergunta {
+        font-size: 24px;
+      }
+
+      .campo-label {
+        font-size: 22px;
+      }
+
+      textarea {
+        font-size: 19px;
+      }
+
+      button {
+        font-size: 23px;
+        padding: 16px 28px;
+      }
+
+      .bola {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 20px;
+      }
+
+      .numero-topo {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <div class="container">
+
+      <div class="topo">
+        <img src="logo.png" alt="Logo da clínica" class="logo">
+        <h1 class="titulo-boasvindas">Olá, tudo bem?</h1>
+        <p class="texto-topo">
+          Sua opinião é muito importante para melhorarmos nosso atendimento.<br>
+          A Dra. Lílian Guerra faz questão de ouvir você.
+        </p>
+      </div>
+
+      <div class="box-pergunta">
+        <p class="pergunta">
+          Em uma escala de 0 a 10,<br>
+          o quanto você recomendaria a clínica<br>
+          para um amigo ou familiar?
+        </p>
+      </div>
+
+      <form id="npsForm"
+            action="https://script.google.com/macros/s/AKfycbzNoDXGqOdFPKLrkKAzHJvxLGhIRXa0e5ihsBdC-UqKm8oBu7DDteuD7YCOupg6Ba4BIQ/exec"
+            method="get"
+            target="hidden_iframe"
+            onsubmit="return enviarFormulario();">
+
+        <input type="hidden" name="origem" value="iPad recepcao">
+
+        <table class="legenda-escala">
+          <tr>
+            <td class="legenda-esquerda">Não recomendaria</td>
+            <td class="legenda-direita">Recomendaria muito</td>
+          </tr>
+        </table>
+
+        <div class="escala">
+          <label class="opcao-nota"><span class="numero-topo">0</span><input type="radio" name="nota" value="0"><span class="bola">0</span></label>
+          <label class="opcao-nota"><span class="numero-topo">1</span><input type="radio" name="nota" value="1"><span class="bola">1</span></label>
+          <label class="opcao-nota"><span class="numero-topo">2</span><input type="radio" name="nota" value="2"><span class="bola">2</span></label>
+          <label class="opcao-nota"><span class="numero-topo">3</span><input type="radio" name="nota" value="3"><span class="bola">3</span></label>
+          <label class="opcao-nota"><span class="numero-topo">4</span><input type="radio" name="nota" value="4"><span class="bola">4</span></label>
+          <label class="opcao-nota"><span class="numero-topo">5</span><input type="radio" name="nota" value="5"><span class="bola">5</span></label>
+          <label class="opcao-nota"><span class="numero-topo">6</span><input type="radio" name="nota" value="6"><span class="bola">6</span></label>
+          <label class="opcao-nota"><span class="numero-topo">7</span><input type="radio" name="nota" value="7"><span class="bola">7</span></label>
+          <label class="opcao-nota"><span class="numero-topo">8</span><input type="radio" name="nota" value="8"><span class="bola">8</span></label>
+          <label class="opcao-nota"><span class="numero-topo">9</span><input type="radio" name="nota" value="9"><span class="bola">9</span></label>
+          <label class="opcao-nota"><span class="numero-topo">10</span><input type="radio" name="nota" value="10"><span class="bola">10</span></label>
+        </div>
+
+        <label for="justificativa" class="campo-label">
+          Se desejar, conte em poucas palavras o motivo da sua nota:
+        </label>
+
+        <textarea id="justificativa" name="justificativa" placeholder="Digite aqui"></textarea>
+
+        <div class="area-botao">
+          <button type="submit">Enviar</button>
+        </div>
+
+        <div id="msg"></div>
+      </form>
+
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+      <div class="rodape">
+        Obrigado por dedicar alguns segundos para nos ajudar a melhorar.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var enviando = false;
+
+    function enviarFormulario() {
+      var notaSelecionada = document.querySelector('input[name="nota"]:checked');
+      var msg = document.getElementById("msg");
+
+      if (!notaSelecionada) {
+        msg.innerHTML = "Por favor, selecione uma nota antes de enviar.";
+        return false;
+      }
+
+      if (enviando) {
+        return false;
+      }
+
+      enviando = true;
+      msg.innerHTML = "Enviando...";
+      return true;
+    }
+
+    document.getElementById("hidden_iframe").onload = function() {
+      if (!enviando) {
+        return;
+      }
+
+      document.getElementById("msg").innerHTML = "Obrigado pela sua resposta.<br>Sua opinião é muito importante para nós.";
+      document.getElementById("npsForm").reset();
+      enviando = false;
+    };
+  </script>
+</body>
+</html>    }
 
     .logo {
       width: 90px;
