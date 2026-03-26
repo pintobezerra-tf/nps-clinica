@@ -128,18 +128,19 @@
       var url = scriptURL +
         "?nota=" + encodeURIComponent(notaSelecionada.value) +
         "&justificativa=" + encodeURIComponent(justificativa) +
-        "&origem=" + encodeURIComponent("iPad recepcao");
+        "&origem=" + encodeURIComponent("iPad recepcao") +
+        "&t=" + new Date().getTime();
 
-      var img = new Image();
-      img.onload = function() {
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = url;
+      document.body.appendChild(iframe);
+
+      setTimeout(function() {
         msg.innerHTML = "Obrigado pela sua resposta.";
         document.getElementById("justificativa").value = "";
         notaSelecionada.checked = false;
-      };
-      img.onerror = function() {
-        msg.innerHTML = "Não foi possível enviar. Tente novamente.";
-      };
-      img.src = url + "&t=" + new Date().getTime();
+      }, 1200);
     }
   </script>
 </body>
