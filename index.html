@@ -261,92 +261,49 @@
         </p>
       </div>
 
-      <table class="legenda-escala">
-        <tr>
-          <td class="legenda-esquerda">Não recomendaria</td>
-          <td class="legenda-direita">Recomendaria muito</td>
-        </tr>
-      </table>
+      <form id="npsForm"
+            action="https://script.google.com/macros/s/AKfycbzNoDXGqOdFPKLrkKAzHJvxLGhIRXa0e5ihsBdC-UqKm8oBu7DDteuD7YCOupg6Ba4BIQ/exec"
+            method="get"
+            target="hidden_iframe"
+            onsubmit="return enviarFormulario();">
 
-      <div class="escala">
-        <label class="opcao-nota">
-          <span class="numero-topo">0</span>
-          <input type="radio" name="nota" value="0">
-          <span class="bola">0</span>
+        <input type="hidden" name="origem" value="iPad recepcao">
+
+        <table class="legenda-escala">
+          <tr>
+            <td class="legenda-esquerda">Não recomendaria</td>
+            <td class="legenda-direita">Recomendaria muito</td>
+          </tr>
+        </table>
+
+        <div class="escala">
+          <label class="opcao-nota"><span class="numero-topo">0</span><input type="radio" name="nota" value="0"><span class="bola">0</span></label>
+          <label class="opcao-nota"><span class="numero-topo">1</span><input type="radio" name="nota" value="1"><span class="bola">1</span></label>
+          <label class="opcao-nota"><span class="numero-topo">2</span><input type="radio" name="nota" value="2"><span class="bola">2</span></label>
+          <label class="opcao-nota"><span class="numero-topo">3</span><input type="radio" name="nota" value="3"><span class="bola">3</span></label>
+          <label class="opcao-nota"><span class="numero-topo">4</span><input type="radio" name="nota" value="4"><span class="bola">4</span></label>
+          <label class="opcao-nota"><span class="numero-topo">5</span><input type="radio" name="nota" value="5"><span class="bola">5</span></label>
+          <label class="opcao-nota"><span class="numero-topo">6</span><input type="radio" name="nota" value="6"><span class="bola">6</span></label>
+          <label class="opcao-nota"><span class="numero-topo">7</span><input type="radio" name="nota" value="7"><span class="bola">7</span></label>
+          <label class="opcao-nota"><span class="numero-topo">8</span><input type="radio" name="nota" value="8"><span class="bola">8</span></label>
+          <label class="opcao-nota"><span class="numero-topo">9</span><input type="radio" name="nota" value="9"><span class="bola">9</span></label>
+          <label class="opcao-nota"><span class="numero-topo">10</span><input type="radio" name="nota" value="10"><span class="bola">10</span></label>
+        </div>
+
+        <label for="justificativa" class="campo-label">
+          Se desejar, conte em poucas palavras o motivo da sua nota:
         </label>
 
-        <label class="opcao-nota">
-          <span class="numero-topo">1</span>
-          <input type="radio" name="nota" value="1">
-          <span class="bola">1</span>
-        </label>
+        <textarea id="justificativa" name="justificativa" placeholder="Digite aqui"></textarea>
 
-        <label class="opcao-nota">
-          <span class="numero-topo">2</span>
-          <input type="radio" name="nota" value="2">
-          <span class="bola">2</span>
-        </label>
+        <div class="area-botao">
+          <button type="submit">Enviar</button>
+        </div>
 
-        <label class="opcao-nota">
-          <span class="numero-topo">3</span>
-          <input type="radio" name="nota" value="3">
-          <span class="bola">3</span>
-        </label>
+        <div id="msg"></div>
+      </form>
 
-        <label class="opcao-nota">
-          <span class="numero-topo">4</span>
-          <input type="radio" name="nota" value="4">
-          <span class="bola">4</span>
-        </label>
-
-        <label class="opcao-nota">
-          <span class="numero-topo">5</span>
-          <input type="radio" name="nota" value="5">
-          <span class="bola">5</span>
-        </label>
-
-        <label class="opcao-nota">
-          <span class="numero-topo">6</span>
-          <input type="radio" name="nota" value="6">
-          <span class="bola">6</span>
-        </label>
-
-        <label class="opcao-nota">
-          <span class="numero-topo">7</span>
-          <input type="radio" name="nota" value="7">
-          <span class="bola">7</span>
-        </label>
-
-        <label class="opcao-nota">
-          <span class="numero-topo">8</span>
-          <input type="radio" name="nota" value="8">
-          <span class="bola">8</span>
-        </label>
-
-        <label class="opcao-nota">
-          <span class="numero-topo">9</span>
-          <input type="radio" name="nota" value="9">
-          <span class="bola">9</span>
-        </label>
-
-        <label class="opcao-nota">
-          <span class="numero-topo">10</span>
-          <input type="radio" name="nota" value="10">
-          <span class="bola">10</span>
-        </label>
-      </div>
-
-      <label for="justificativa" class="campo-label">
-        Se desejar, conte em poucas palavras o motivo da sua nota:
-      </label>
-
-      <textarea id="justificativa" placeholder="Digite aqui"></textarea>
-
-      <div class="area-botao">
-        <button onclick="enviar()">Enviar</button>
-      </div>
-
-      <div id="msg"></div>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
       <div class="rodape">
         Obrigado por dedicar alguns segundos para nos ajudar a melhorar.
@@ -355,37 +312,35 @@
   </div>
 
   <script>
-    var scriptURL = "https://script.google.com/macros/s/AKfycbzNoDXGqOdFPKLrkKAzHJvxLGhIRXa0e5ihsBdC-UqKm8oBu7DDteuD7YCOupg6Ba4BIQ/exec";
+    var enviando = false;
 
-    function enviar() {
+    function enviarFormulario() {
       var notaSelecionada = document.querySelector('input[name="nota"]:checked');
-      var justificativa = document.getElementById("justificativa").value;
       var msg = document.getElementById("msg");
 
       if (!notaSelecionada) {
         msg.innerHTML = "Por favor, selecione uma nota antes de enviar.";
+        return false;
+      }
+
+      if (enviando) {
+        return false;
+      }
+
+      enviando = true;
+      msg.innerHTML = "Enviando...";
+      return true;
+    }
+
+    document.getElementById("hidden_iframe").onload = function() {
+      if (!enviando) {
         return;
       }
 
-      msg.innerHTML = "Enviando...";
-
-      var url = scriptURL +
-        "?nota=" + encodeURIComponent(notaSelecionada.value) +
-        "&justificativa=" + encodeURIComponent(justificativa) +
-        "&origem=" + encodeURIComponent("iPad recepcao") +
-        "&t=" + new Date().getTime();
-
-      var iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.src = url;
-      document.body.appendChild(iframe);
-
-      setTimeout(function() {
-        msg.innerHTML = "Obrigado pela sua resposta.";
-        document.getElementById("justificativa").value = "";
-        notaSelecionada.checked = false;
-      }, 1200);
-    }
+      document.getElementById("msg").innerHTML = "Obrigado pela sua resposta.<br>Sua opinião é muito importante para nós.";
+      document.getElementById("npsForm").reset();
+      enviando = false;
+    };
   </script>
 </body>
 </html>
