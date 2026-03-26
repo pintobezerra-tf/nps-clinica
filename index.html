@@ -334,4 +334,304 @@
     }
   </script>
 </body>
+</html>    }
+
+    .logo {
+      width: 90px;
+      height: auto;
+      margin-bottom: 14px;
+    }
+
+    .titulo-boasvindas {
+      font-size: 30px;
+      line-height: 1.3;
+      margin: 0 0 10px 0;
+      color: #7f7368;
+      font-weight: bold;
+    }
+
+    .texto-topo {
+      font-size: 21px;
+      line-height: 1.5;
+      margin: 0;
+      color: #5a4f48;
+    }
+
+    .box-pergunta {
+      background: #fbfaf8;
+      border: 1px solid #e7e1db;
+      border-radius: 14px;
+      padding: 18px 16px;
+      margin-bottom: 24px;
+    }
+
+    .pergunta {
+      font-size: 28px;
+      line-height: 1.4;
+      margin: 0;
+      font-weight: bold;
+      color: #3d342e;
+      text-align: center;
+    }
+
+    .legenda-escala {
+      width: 100%;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      border-collapse: collapse;
+    }
+
+    .legenda-escala td {
+      font-size: 18px;
+      color: #7f7368;
+      padding: 4px 0;
+    }
+
+    .legenda-esquerda {
+      text-align: left;
+    }
+
+    .legenda-direita {
+      text-align: right;
+    }
+
+    .escala {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .opcao-nota {
+      display: inline-block;
+      margin: 6px 4px;
+      text-align: center;
+      vertical-align: top;
+    }
+
+    .opcao-nota input {
+      display: none;
+    }
+
+    .numero-topo {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #5a4f48;
+      font-weight: bold;
+    }
+
+    .bola {
+      display: inline-block;
+      width: 52px;
+      height: 52px;
+      line-height: 52px;
+      text-align: center;
+      border: 2px solid #a79a8d;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #7f7368;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .opcao-nota input:checked + .bola {
+      background: #a79a8d;
+      border-color: #7f7368;
+      color: #ffffff;
+    }
+
+    .campo-label {
+      display: block;
+      font-size: 25px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      font-weight: bold;
+      color: #3d342e;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      box-sizing: border-box;
+      padding: 16px;
+      font-size: 21px;
+      font-family: Arial, sans-serif;
+      color: #3d342e;
+      border: 1px solid #cfc5bc;
+      border-radius: 12px;
+      background: #fcfbf9;
+      margin-bottom: 22px;
+      resize: none;
+    }
+
+    .area-botao {
+      text-align: center;
+    }
+
+    button {
+      background: #7f7368;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 18px 34px;
+      font-size: 26px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #msg {
+      margin-top: 18px;
+      font-size: 21px;
+      line-height: 1.4;
+      text-align: center;
+      color: #7f7368;
+      min-height: 28px;
+    }
+
+    .rodape {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 17px;
+      color: #8e8175;
+      line-height: 1.4;
+    }
+
+    @media screen and (max-width: 700px) {
+      .container {
+        width: 94%;
+        padding: 20px 16px 24px 16px;
+      }
+
+      .titulo-boasvindas {
+        font-size: 25px;
+      }
+
+      .texto-topo {
+        font-size: 19px;
+      }
+
+      .pergunta {
+        font-size: 24px;
+      }
+
+      .campo-label {
+        font-size: 22px;
+      }
+
+      textarea {
+        font-size: 19px;
+      }
+
+      button {
+        font-size: 23px;
+        padding: 16px 28px;
+      }
+
+      .bola {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 20px;
+      }
+
+      .numero-topo {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <div class="container">
+
+      <div class="topo">
+        <img src="logo.png" alt="Logo da clínica" class="logo">
+        <h1 class="titulo-boasvindas">Olá, tudo bem?</h1>
+        <p class="texto-topo">
+          Sua opinião é muito importante para melhorarmos nosso atendimento.<br>
+          A Dra. Lílian Guerra faz questão de ouvir você.
+        </p>
+      </div>
+
+      <div class="box-pergunta">
+        <p class="pergunta">
+          Em uma escala de 0 a 10,<br>
+          o quanto você recomendaria a clínica<br>
+          para um amigo ou familiar?
+        </p>
+      </div>
+
+      <table class="legenda-escala">
+        <tr>
+          <td class="legenda-esquerda">Não recomendaria</td>
+          <td class="legenda-direita">Recomendaria muito</td>
+        </tr>
+      </table>
+
+      <div class="escala">
+        <label class="opcao-nota"><span class="numero-topo">0</span><input type="radio" name="nota" value="0"><span class="bola">0</span></label>
+        <label class="opcao-nota"><span class="numero-topo">1</span><input type="radio" name="nota" value="1"><span class="bola">1</span></label>
+        <label class="opcao-nota"><span class="numero-topo">2</span><input type="radio" name="nota" value="2"><span class="bola">2</span></label>
+        <label class="opcao-nota"><span class="numero-topo">3</span><input type="radio" name="nota" value="3"><span class="bola">3</span></label>
+        <label class="opcao-nota"><span class="numero-topo">4</span><input type="radio" name="nota" value="4"><span class="bola">4</span></label>
+        <label class="opcao-nota"><span class="numero-topo">5</span><input type="radio" name="nota" value="5"><span class="bola">5</span></label>
+        <label class="opcao-nota"><span class="numero-topo">6</span><input type="radio" name="nota" value="6"><span class="bola">6</span></label>
+        <label class="opcao-nota"><span class="numero-topo">7</span><input type="radio" name="nota" value="7"><span class="bola">7</span></label>
+        <label class="opcao-nota"><span class="numero-topo">8</span><input type="radio" name="nota" value="8"><span class="bola">8</span></label>
+        <label class="opcao-nota"><span class="numero-topo">9</span><input type="radio" name="nota" value="9"><span class="bola">9</span></label>
+        <label class="opcao-nota"><span class="numero-topo">10</span><input type="radio" name="nota" value="10"><span class="bola">10</span></label>
+      </div>
+
+      <label for="justificativa" class="campo-label">
+        Se desejar, conte em poucas palavras o motivo da sua nota:
+      </label>
+
+      <textarea id="justificativa" placeholder="Digite aqui"></textarea>
+
+      <div class="area-botao">
+        <button type="button" onclick="enviar()">Enviar</button>
+      </div>
+
+      <div id="msg"></div>
+
+      <div class="rodape">
+        Obrigado por dedicar alguns segundos para nos ajudar a melhorar.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var scriptURL = "https://script.google.com/macros/s/AKfycbzNoDXGqOdFPKLrkKAzHJvxLGhIRXa0e5ihsBdC-UqKm8oBu7DDteuD7YCOupg6Ba4BIQ/exec";
+
+    function enviar() {
+      var notaSelecionada = document.querySelector('input[name="nota"]:checked');
+      var justificativa = document.getElementById("justificativa").value;
+      var msg = document.getElementById("msg");
+
+      if (!notaSelecionada) {
+        msg.innerHTML = "Por favor, selecione uma nota antes de enviar.";
+        return;
+      }
+
+      msg.innerHTML = "Enviando...";
+
+      var url = scriptURL +
+        "?nota=" + encodeURIComponent(notaSelecionada.value) +
+        "&justificativa=" + encodeURIComponent(justificativa) +
+        "&origem=" + encodeURIComponent("iPad recepcao") +
+        "&t=" + new Date().getTime();
+
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = url;
+      document.body.appendChild(iframe);
+
+      setTimeout(function() {
+        msg.innerHTML = "Obrigado pela sua resposta.<br>Sua opinião é muito importante para nós.";
+        document.getElementById("justificativa").value = "";
+        notaSelecionada.checked = false;
+      }, 1200);
+    }
+  </script>
+</body>
 </html>
